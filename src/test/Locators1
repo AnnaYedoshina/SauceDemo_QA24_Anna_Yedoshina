@@ -1,0 +1,77 @@
+//id
+By.id("user-name");
+
+//name
+By.name("password");
+
+//classname
+By.classname("submit-button btn_action");
+
+//tagName
+By.tagName("select")
+
+//linkText
+By.linkText("All Items");
+
+//partialLinkText
+By.partialLinkText("Items");
+
+//xpath по атрибуту
+By.xpath("//button[@class = 'btn btn_primary btn_small btn_inventory']");
+
+//xpath по тексту
+By.xpath("//div[text() = 'Sauce Labs Bolt T-Shirt']");
+
+//xpath по частичному совпадению атрибута
+By.xpath("//button[contains(@id, "fleece")]");
+
+//xpath по частичному совпадению текста
+By.xpath("//div[contains(text(), "Bike")]");
+
+//xpath AND
+By.xpath("//img[@alt = 'Sauce Labs Bike Light' and @class = 'inventory_item_img']");
+
+//xpath following
+By.xpath("//div[@class='inventory_details_desc large_size']//following-sibling::div");
+
+//xpath preceding
+By.xpath("//div[@class='inventory_details_desc large_size']//preceding-sibling::div");
+
+//xpath parent
+By.xpath("//div[@class='inventory_details_desc large_size']//parent::div");
+
+//xpath ancestor
+By.xpath("//button[@id='add-to-cart-sauce-labs-bike-light']//ancestor::div[@id='root']");
+
+//xpath descendant
+By.xpath("//div[@id='root']//descendant::button[@id = 'react-burger-menu-btn']");
+
+//.class
+By.cssSelector(".submit-button btn_action");
+
+//.class1.class2.class3
+By.cssSelector(".btn.btn_primary.btn_small.btn_inventory");
+
+//id
+By.cssSelector("#add-to-cart-sauce-labs-backpack");
+
+//tagName
+By.cssSelector("");
+
+//[attribute=value]
+By.cssSelector("button[name = remove-sauce-labs-backpack]");
+
+//[attribute~=value]
+By.cssSelector("img[alt~=Bike]");
+
+//[attribute|=value]
+By.cssSelector("button[name |= remove]");
+
+//[attribute^=value]
+By.cssSelector("button[name ^= remove]");
+
+//[attribute$=value]
+By.cssSelector("img[class$=_img]");
+
+//[attribute*=value]
+By.cssSelector("img[alt *= T-Shirt]");
