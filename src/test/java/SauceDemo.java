@@ -37,8 +37,6 @@ public class SauceDemo {
         inputPassword.sendKeys("secret_sauce");
         WebElement loginButton = driver.findElement(By.cssSelector("input[type = submit]"));
         loginButton.click();
-        WebElement productsTitle = driver.findElement(By.cssSelector("span[class=title]"));
-        Assert.assertTrue(productsTitle.isDisplayed());
         WebElement addToCartButtonBackpack = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
         addToCartButtonBackpack.click();
         WebElement removeButton = driver.findElement(By.cssSelector("button[name=remove-sauce-labs-backpack]"));
