@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class SauceDemo1 {
+public class SauceDemoNew {
     private static final String URL = "https://www.saucedemo.com/";
     private WebDriver driver;
 

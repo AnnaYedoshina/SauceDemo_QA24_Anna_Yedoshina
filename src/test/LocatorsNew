@@ -56,7 +56,7 @@ By.cssSelector(".btn.btn_primary.btn_small.btn_inventory");
 By.cssSelector("#add-to-cart-sauce-labs-backpack");
 
 //tagName
-By.cssSelector("");
+By.cssSelector("select");
 
 //[attribute=value]
 By.cssSelector("button[name = remove-sauce-labs-backpack]");
