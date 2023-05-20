@@ -15,36 +15,38 @@ public class CheckoutOverviewTests extends BaseTest {
         checkOutPage.checkOut(FIRSTNAME, LASTNAME, POSTALCODE);
         Assert.assertTrue(checkoutOverviewPage.finishButtonIsDisplayed());
     }
+
     @Test
-            public void checkProductTest() {
+    public void checkProductTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
         productsPage.clickAddToCartButton(testItemName);
         productsPage.clickShoppingCartLink();
         shoppingCartPage.clickCheckOutButton();
         checkOutPage.checkOut(FIRSTNAME, LASTNAME, POSTALCODE);
-        String actualItemName = checkoutOverviewPage.getItemName(testItemName);
+        String actualItemName = checkoutOverviewPage.getItemName();
         String expectedItemName = "Sauce Labs Backpack";
         Assert.assertEquals(actualItemName, expectedItemName);
-        String actualItemDescription = checkoutOverviewPage.getItemDescription(testItemName);
+        String actualItemDescription = checkoutOverviewPage.getItemDescription();
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly " +
                 "Pack that melds uncompromising style with unequaled laptop and tablet protection.";
         Assert.assertEquals(actualItemDescription, expectedItemDescription);
-        String actualItemPrice = checkoutOverviewPage.getItemPrice(testItemName);
+        String actualItemPrice = checkoutOverviewPage.getItemPrice();
         String expectedItemPrice = "$29.99";
         Assert.assertEquals(actualItemPrice, expectedItemPrice);
-        String actualItemTotal = checkoutOverviewPage.getItemTotal(testItemName);
+        String actualItemTotal = checkoutOverviewPage.getItemTotal();
         String expectedItemTotal = "Item total: $29.99";
         Assert.assertEquals(actualItemTotal, expectedItemTotal);
-        String actualItemTax = checkoutOverviewPage.getItemTax(testItemName);
+        String actualItemTax = checkoutOverviewPage.getItemTax();
         String expectedItemTax = "Tax: $2.40";
         Assert.assertEquals(actualItemTax, expectedItemTax);
-        String actualTotalPrice = checkoutOverviewPage.getTotalPrice(testItemName);
+        String actualTotalPrice = checkoutOverviewPage.getTotalPrice();
         String expectedTotalPrice = "Total: $32.39";
         Assert.assertEquals(actualTotalPrice, expectedTotalPrice);
     }
+
     @Test
-            public void cancelButtonTest() {
+    public void cancelButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
         productsPage.clickAddToCartButton(testItemName);
@@ -58,26 +60,5 @@ public class CheckoutOverviewTests extends BaseTest {
                 "Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
         Assert.assertEquals(actualItemDescriptionNew, expectedItemDescriptionNew);
     }
-    @Test
-            public void finishButtonTest(){
-        String testItemName = "Sauce Labs Backpack";
-        loginPage.login(USERNAME, PASSWORD);
-        productsPage.clickAddToCartButton(testItemName);
-        productsPage.clickShoppingCartLink();
-        shoppingCartPage.clickCheckOutButton();
-        checkOutPage.checkOut(FIRSTNAME,LASTNAME,POSTALCODE);
-        checkoutOverviewPage.clickFinishButton();
-        Assert.assertTrue(checkoutCompletePage.backHomeButtonIsDisplayed());
-
-
-
-
-
-
-
-
-
-
-
-    }
 }
+

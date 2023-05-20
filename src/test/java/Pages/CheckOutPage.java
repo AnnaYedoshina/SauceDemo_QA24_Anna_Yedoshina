@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckOutPage extends BasePage {
     public CheckOutPage(WebDriver driver) {
-
         super(driver);
     }
 
@@ -13,7 +12,6 @@ public class CheckOutPage extends BasePage {
     private By lastNameInputLocator = By.id("last-name");
     private By postalCodeInputLocator = By.id("postal-code");
     private By continueButtonLocator = By.id("continue");
-
     private By canselButtonLocator = By.id("cancel");
 
 
@@ -23,7 +21,6 @@ public class CheckOutPage extends BasePage {
 
     public void setFirstNameValue(String firstName) {
         driver.findElement(firstNameInputLocator).sendKeys(firstName);
-
     }
 
     public void setLastNameValue(String lastName) {
@@ -32,9 +29,9 @@ public class CheckOutPage extends BasePage {
 
     public void setPostalCodeValue(String postalCode) {
         driver.findElement(postalCodeInputLocator).sendKeys(postalCode);
-
     }
-    public void checkOut(String firstname, String lastName,String postalCode ){
+
+    public void checkOut(String firstname, String lastName, String postalCode) {
         this.setFirstNameValue(firstname);
         this.setLastNameValue(lastName);
         this.setPostalCodeValue(postalCode);

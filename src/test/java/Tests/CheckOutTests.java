@@ -17,8 +17,6 @@ public class CheckOutTests extends BaseTest {
         checkOutPage.setPostalCodeValue("12345");
         checkOutPage.clickContinueButton();
         Assert.assertTrue(checkoutOverviewPage.finishButtonIsDisplayed());
-
-
     }
 
     @Test

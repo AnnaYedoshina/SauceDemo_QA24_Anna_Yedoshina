@@ -11,18 +11,17 @@ public class ShoppingCartTests extends BaseTest {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.clickAddToCartButton(testItemName);
         productsPage.clickShoppingCartLink();
-        String actualItemName = shoppingCartPage.getItemName(testItemName);
+        String actualItemName = shoppingCartPage.getItemName();
         String expectedItemName = "Sauce Labs Backpack";
         Assert.assertEquals(actualItemName, expectedItemName);
-        String actualItemDescription = shoppingCartPage.getItemDescription(testItemName);
+        String actualItemDescription = shoppingCartPage.getItemDescription();
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly " +
                 "Pack that melds uncompromising style with unequaled laptop and tablet protection.";
         Assert.assertEquals(actualItemDescription, expectedItemDescription);
-        String actualItemPrice = shoppingCartPage.getItemPrice(testItemName);
+        String actualItemPrice = shoppingCartPage.getItemPrice();
         String expectedItemPrice = "$29.99";
         Assert.assertEquals(actualItemPrice, expectedItemPrice);
     }
-
     @Test
     public void shoppingCartContinueShoppingButtonTest() {
         String testItemName = "Sauce Labs Backpack";
@@ -36,7 +35,6 @@ public class ShoppingCartTests extends BaseTest {
                 "Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
         Assert.assertEquals(actualItemDescriptionNew, expectedItemDescriptionNew);
     }
-
     @Test
     public void shoppingCartCheckOutButtonTest() {
         String testItemName = "Sauce Labs Backpack";
@@ -45,7 +43,5 @@ public class ShoppingCartTests extends BaseTest {
         productsPage.clickShoppingCartLink();
         shoppingCartPage.clickCheckOutButton();
         Assert.assertTrue(checkOutPage.firstNameInputIsDisplayed());
-
-
     }
 }

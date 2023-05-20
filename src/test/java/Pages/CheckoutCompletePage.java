@@ -8,9 +8,10 @@ public class CheckoutCompletePage extends BasePage {
     public CheckoutCompletePage(WebDriver driver) {
         super(driver);
     }
+
     private By backHomeButtonLocator = By.id("back-to-products");
 
-    public boolean backHomeButtonIsDisplayed(){
+    public boolean backHomeButtonIsDisplayed() {
         return driver.findElement(backHomeButtonLocator).isDisplayed();
     }
 }

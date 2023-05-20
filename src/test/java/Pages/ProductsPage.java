@@ -17,55 +17,45 @@ public class ProductsPage extends BasePage {
     private By itemDescriptionLocator = By.cssSelector(".inventory_item_desc");
     private By removeButtonLocator = By.cssSelector("button[id |= 'remove']");
 
-
     public ProductsPage(WebDriver driver) {
         super(driver);
-
     }
 
     public boolean isShoppingCartLinkDisplayed() {
         return driver.findElement(shoppingCartLink).isDisplayed();
     }
+
     public boolean removeButtonIsDisplayed() {
         return driver.findElement(removeButtonLocator).isDisplayed();
     }
-    public boolean addToCartButtonIsDisplayed() {
 
+    public boolean addToCartButtonIsDisplayed() {
         return driver.findElement(addToCartButtonLocator).isDisplayed();
     }
-
-
-
 
     public void clickAddToCartButton(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         itemContainer.findElement(addToCartButtonLocator).click();
-
     }
 
     public void clickRemoveButton(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         itemContainer.findElement(removeButtonLocator).click();
-
     }
 
     public void openItem(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         itemContainer.findElement(itemNameLocator).click();
-
-
     }
 
     public String getItemPrice(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         return itemContainer.findElement(itemPriceLocator).getText();
-
     }
 
     public String getItemDescription(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         return itemContainer.findElement(itemDescriptionLocator).getText();
-
     }
 
     public void clickShoppingCartLink() {
@@ -77,19 +67,8 @@ public class ProductsPage extends BasePage {
         for (WebElement item : allItems) {
             if (item.findElement(itemNameLocator).getText().equals(itemName)) {
                 return item;
-
             }
         }
         return null;
-
-
-    }
-
-    private WebElement getItemContainerByNameAdvanced(String itemName) {
-        return driver.findElement(By.xpath(
-                String.format("//div[text()='%s']/ancestor::div[@class='inventory_item']", itemName)
-        ));
-
-
     }
 }

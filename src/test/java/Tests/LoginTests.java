@@ -20,7 +20,6 @@ public class LoginTests extends BaseTest {
         loginPage.clickLoginButton();
         Assert.assertTrue(productsPage.isShoppingCartLinkDisplayed());
     }
-
     @Test
     public void negativeLoginPage() {
         loginPage.login("", "secret_sauce");

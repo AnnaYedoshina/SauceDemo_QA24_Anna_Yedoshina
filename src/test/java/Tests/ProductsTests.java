@@ -17,7 +17,6 @@ public class ProductsTests extends BaseTest {
                 "Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
         Assert.assertEquals(actualItemDescription, expectedItemDescription);
     }
-
     @Test
     public void addToCartButtonTest() {
         String testItemName = "Sauce Labs Backpack";
@@ -25,7 +24,6 @@ public class ProductsTests extends BaseTest {
         productsPage.clickAddToCartButton(testItemName);
         Assert.assertTrue(productsPage.removeButtonIsDisplayed());
     }
-
     @Test
     public void removeButtonTest() {
         String testItemName = "Sauce Labs Backpack";

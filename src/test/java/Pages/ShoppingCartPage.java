@@ -12,10 +12,8 @@ public class ShoppingCartPage extends BasePage {
     private By removeButtonLocator = By.cssSelector("button[id |= 'remove'");
     private By checkOutButtonLocator = By.cssSelector("#checkout");
 
-
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
-
     }
 
     public boolean isContinueShoppingIsDisplayed() {
@@ -26,24 +24,23 @@ public class ShoppingCartPage extends BasePage {
         driver.findElement(continueShoppingButton).click();
     }
 
-    public String getItemName(String itemName) {
+    public String getItemName() {
         return driver.findElement(itemNameLocator).getText();
     }
 
-    public String getItemDescription(String itemName) {
+    public String getItemDescription() {
         return driver.findElement(itemDescriptionLocator).getText();
     }
 
-    public String getItemPrice(String itemName) {
+    public String getItemPrice() {
         return driver.findElement(itemPriceLocator).getText();
-
     }
 
     public void clickRemoveButton() {
         driver.findElement(removeButtonLocator).click();
     }
 
-    public boolean itemNameIsNotDisplayed(String itemName) {
+    public boolean itemNameIsNotDisplayed() {
         return driver.findElement(itemNameLocator).isDisplayed();
     }
 
