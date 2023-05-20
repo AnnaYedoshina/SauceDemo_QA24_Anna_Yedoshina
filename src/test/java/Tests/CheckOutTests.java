@@ -30,6 +30,6 @@ public class CheckOutTests extends BaseTest {
         shoppingCartPage.clickCheckOutButton();
         checkOutPage.clickCancelButton();
         Assert.assertTrue(shoppingCartPage.isContinueShoppingIsDisplayed());
-        shoppingCartPage.clickCheckOutButton();
+
     }
 }
