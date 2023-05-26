@@ -4,13 +4,13 @@ import Pages.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+import utils.TestLiner;
 
 import java.time.Duration;
 
+@Listeners(TestLiner.class)
 public abstract class BaseTest {
     private final static String URL = "https://www.saucedemo.com/";
     protected final static String USERNAME = "standard_user";
@@ -28,10 +28,11 @@ public abstract class BaseTest {
     protected ProductDetailsPage productDetailsPage;
 
     @BeforeClass
-    public void setUp() {
+    public void setUp(ITestContext context) {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        context.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         shoppingCartPage = new ShoppingCartPage(driver);
@@ -40,14 +41,17 @@ public abstract class BaseTest {
         checkoutCompletePage = new CheckoutCompletePage(driver);
         productDetailsPage = new ProductDetailsPage(driver);
     }
+
     @AfterClass
     public void tearDown() {
         driver.quit();
     }
+
     @BeforeMethod
     public void navigate() {
         driver.get(URL);
     }
+
     @AfterMethod(alwaysRun = true)
     public void clearCookies() {
         driver.manage().deleteAllCookies();

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class CheckoutOverviewTests extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke"}, description = "Тестирование checkOut формы")
     public void positiveCheckoutTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -16,7 +16,7 @@ public class CheckoutOverviewTests extends BaseTest {
         Assert.assertTrue(checkoutOverviewPage.finishButtonIsDisplayed());
     }
 
-    @Test
+    @Test(groups = {"regression"}, description = "Тестирование информации продукта в форме CheckOutOverview")
     public void checkProductTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -45,7 +45,7 @@ public class CheckoutOverviewTests extends BaseTest {
         Assert.assertEquals(actualTotalPrice, expectedTotalPrice);
     }
 
-    @Test
+    @Test(groups = {"regression"}, description = "Тестирование кнопки cancel в форме CheckOutOverview")
     public void cancelButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
