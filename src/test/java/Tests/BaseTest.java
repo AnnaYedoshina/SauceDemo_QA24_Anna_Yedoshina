@@ -4,6 +4,7 @@ import Pages.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.TestLiner;
@@ -27,9 +28,16 @@ public abstract class BaseTest {
     protected CheckoutCompletePage checkoutCompletePage;
     protected ProductDetailsPage productDetailsPage;
 
-    @BeforeClass
-    public void setUp(ITestContext context) {
-        driver = new ChromeDriver();
+    @Parameters({"browserName"})
+    @BeforeClass(alwaysRun = true)
+    public void setUp(@Optional("chrome") String browserName, ITestContext context) throws Exception {
+        if(browserName.equals("chrome")){
+            driver = new ChromeDriver();
+        }else if (browserName.equals("safari")){
+            driver = new SafariDriver();
+        }else {
+            throw new Exception("Unsupported browser");
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         context.setAttribute("driver", driver);
@@ -42,12 +50,12 @@ public abstract class BaseTest {
         productDetailsPage = new ProductDetailsPage(driver);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void navigate() {
         driver.get(URL);
     }

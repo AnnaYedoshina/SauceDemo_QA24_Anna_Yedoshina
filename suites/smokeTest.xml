@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding= "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="SmokeTest">
-<test name="By group">
-    <groups>
-        <run>
-            <include name="smoke"/>
-        </run>
-    </groups>
-    <packages>
-        <package name="Tests">
-        </package>
-    </packages>
-</test>
+<suite name="SmokeTest" parallel="tests" thread-count="2">
+    <test name="On Chrome">
+        <parameter name="browserName" value="chrome"/>
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="Tests">
+            </package>
+        </packages>
+    </test>
+
+    <test name="On Safari">
+        <parameter name="browserName" value="safari"/>
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="Tests">
+            </package>
+        </packages>
+    </test>
 </suite>
