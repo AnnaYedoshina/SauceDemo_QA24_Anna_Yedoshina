@@ -51,7 +51,6 @@ public class ProductsTests extends BaseTest {
     @Test(groups = {"regression"}, dataProvider = "productsInfoTestData")
     public void productInfoTestNew(String ItemName, String expectedItemPrice, String expectedDescription) {
         loginPage.login(USERNAME, PASSWORD);
-        // productsPage.getItemName(ItemName);
         assertEquals(productsPage.getItemPrice(ItemName), expectedItemPrice);
         assertEquals(productsPage.getItemDescription(ItemName), expectedDescription);
 
