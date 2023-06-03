@@ -7,11 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.InvokedListener;
 import utils.TestLiner;
 
 import java.time.Duration;
 
-@Listeners(TestLiner.class)
+@Listeners({TestLiner.class, InvokedListener.class})
 public abstract class BaseTest {
     private final static String URL = "https://www.saucedemo.com/";
     protected final static String USERNAME = "standard_user";
@@ -31,11 +32,11 @@ public abstract class BaseTest {
     @Parameters({"browserName"})
     @BeforeClass(alwaysRun = true)
     public void setUp(@Optional("chrome") String browserName, ITestContext context) throws Exception {
-        if(browserName.equals("chrome")){
+        if (browserName.equals("chrome")) {
             driver = new ChromeDriver();
-        }else if (browserName.equals("safari")){
+        } else if (browserName.equals("safari")) {
             driver = new SafariDriver();
-        }else {
+        } else {
             throw new Exception("Unsupported browser");
         }
         driver.manage().window().maximize();

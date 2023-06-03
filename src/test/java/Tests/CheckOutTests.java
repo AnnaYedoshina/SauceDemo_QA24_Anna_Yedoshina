@@ -1,11 +1,14 @@
 package Tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CheckOutTests extends BaseTest {
 
     @Test(groups = {"smoke"}, description = "Тестирование формы checkOut")
+    @Severity(SeverityLevel.NORMAL)
     public void positiveCheckout() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -20,6 +23,7 @@ public class CheckOutTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, description = "Тестирование кнопки cancel")
+    @Severity(SeverityLevel.NORMAL)
     public void cancelButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);

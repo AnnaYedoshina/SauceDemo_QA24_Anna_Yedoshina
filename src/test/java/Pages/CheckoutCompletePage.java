@@ -12,6 +12,7 @@ public class CheckoutCompletePage extends BasePage {
     private By backHomeButtonLocator = By.id("back-to-products");
 
     public boolean backHomeButtonIsDisplayed() {
+
         return driver.findElement(backHomeButtonLocator).isDisplayed();
     }
 }

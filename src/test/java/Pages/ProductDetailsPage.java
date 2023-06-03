@@ -11,6 +11,7 @@ public class ProductDetailsPage extends BasePage {
     private By addToCartButtonLocator = By.cssSelector("button[id |= 'add-to-cart'");
 
     public boolean addToCartButtonIsDisplayed() {
+
         return driver.findElement(addToCartButtonLocator).isDisplayed();
     }
 }

@@ -1,5 +1,7 @@
 package Tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.checkerframework.checker.units.qual.A;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -23,6 +25,7 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"smoke"}, description = "Тестирование кнопки addToCart")
+    @Severity(SeverityLevel.CRITICAL)
     public void addToCartButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -31,6 +34,7 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, description = "Тестирование кнопки Remove")
+    @Severity(SeverityLevel.NORMAL)
     public void removeButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -40,6 +44,7 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, description = "Тестирование открытия формы товара")
+    @Severity(SeverityLevel.NORMAL)
     public void openItemTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -49,6 +54,7 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, dataProvider = "productsInfoTestData")
+    @Severity(SeverityLevel.NORMAL)
     public void productInfoTestNew(String ItemName, String expectedItemPrice, String expectedDescription) {
         loginPage.login(USERNAME, PASSWORD);
         assertEquals(productsPage.getItemPrice(ItemName), expectedItemPrice);
