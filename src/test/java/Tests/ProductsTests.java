@@ -34,7 +34,6 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, description = "Тестирование кнопки Remove")
-    @Severity(SeverityLevel.NORMAL)
     public void removeButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -44,7 +43,6 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, description = "Тестирование открытия формы товара")
-    @Severity(SeverityLevel.NORMAL)
     public void openItemTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -54,7 +52,6 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, dataProvider = "productsInfoTestData")
-    @Severity(SeverityLevel.NORMAL)
     public void productInfoTestNew(String ItemName, String expectedItemPrice, String expectedDescription) {
         loginPage.login(USERNAME, PASSWORD);
         assertEquals(productsPage.getItemPrice(ItemName), expectedItemPrice);

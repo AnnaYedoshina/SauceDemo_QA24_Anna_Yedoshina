@@ -22,7 +22,6 @@ public class CheckoutOverviewTests extends BaseTest {
 
     @Test(groups = {"regression"}, description = "Тестирование формы CheckOutOverview")
     @Description("Проверка соответсвия всей информации о товарах")
-    @Severity(SeverityLevel.NORMAL)
     public void checkProductTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -52,7 +51,6 @@ public class CheckoutOverviewTests extends BaseTest {
     }
 
     @Test(groups = {"regression"}, description = "Тестирование кнопки cancel в форме CheckOutOverview")
-    @Severity(SeverityLevel.NORMAL)
     public void cancelButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);

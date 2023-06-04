@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding= "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="SmokeTest" parallel="tests" thread-count="2">
+<suite name="SmokeTest" >
     <test name="On Chrome">
         <parameter name="browserName" value="chrome"/>
-        <groups>
-            <run>
-                <include name="smoke"/>
-            </run>
-        </groups>
-        <packages>
-            <package name="Tests">
-            </package>
-        </packages>
-    </test>
-
-    <test name="On Safari">
-        <parameter name="browserName" value="safari"/>
         <groups>
             <run>
                 <include name="smoke"/>
