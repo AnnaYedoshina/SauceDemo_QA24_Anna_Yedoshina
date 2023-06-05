@@ -1,5 +1,7 @@
 package Tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.checkerframework.checker.units.qual.A;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -23,6 +25,7 @@ public class ProductsTests extends BaseTest {
     }
 
     @Test(groups = {"smoke"}, description = "Тестирование кнопки addToCart")
+    @Severity(SeverityLevel.CRITICAL)
     public void addToCartButtonTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);

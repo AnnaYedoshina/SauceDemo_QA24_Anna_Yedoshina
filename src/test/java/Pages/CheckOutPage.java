@@ -39,6 +39,7 @@ public class CheckOutPage extends BasePage {
     }
 
     public void clickContinueButton() {
+
         driver.findElement(continueButtonLocator).click();
     }
 

@@ -1,11 +1,15 @@
 package Tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CheckoutOverviewTests extends BaseTest {
 
     @Test(groups = {"smoke"}, description = "Тестирование checkOut формы")
+    @Severity(SeverityLevel.CRITICAL)
     public void positiveCheckoutTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);
@@ -16,7 +20,8 @@ public class CheckoutOverviewTests extends BaseTest {
         Assert.assertTrue(checkoutOverviewPage.finishButtonIsDisplayed());
     }
 
-    @Test(groups = {"regression"}, description = "Тестирование информации продукта в форме CheckOutOverview")
+    @Test(groups = {"regression"}, description = "Тестирование формы CheckOutOverview")
+    @Description("Проверка соответсвия всей информации о товарах")
     public void checkProductTest() {
         String testItemName = "Sauce Labs Backpack";
         loginPage.login(USERNAME, PASSWORD);

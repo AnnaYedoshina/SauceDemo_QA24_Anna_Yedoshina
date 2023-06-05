@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,38 +19,46 @@ public class CheckoutOverviewPage extends BasePage {
     private By cancelButtonLocator = By.id("cancel");
 
     public boolean finishButtonIsDisplayed() {
+
         return driver.findElement(finishButtonLocator).isDisplayed();
     }
 
     public String getItemName() {
+
         return driver.findElement(itemNameLocator).getText();
     }
 
     public String getItemDescription() {
+
         return driver.findElement(itemDescriptionLocator).getText();
     }
 
     public String getItemPrice() {
+
         return driver.findElement(itemPriceLocator).getText();
     }
 
     public String getItemTotal() {
+
         return driver.findElement(itemTotalLocator).getText();
     }
 
     public String getItemTax() {
+
         return driver.findElement(itemItemTaxLocator).getText();
     }
 
     public String getTotalPrice() {
         return driver.findElement(totalPriceLocator).getText();
     }
-
+    @Step
     public void clickCancelButton() {
+
         driver.findElement(cancelButtonLocator).click();
     }
 
     public void clickFinishButton() {
+
         driver.findElement(finishButtonLocator).click();
     }
 }
