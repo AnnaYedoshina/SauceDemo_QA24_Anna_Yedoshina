@@ -24,19 +24,6 @@ public class CheckOutTests extends BaseTest {
     @Test(groups = {"regression"}, description = "Тестирование кнопки cancel")
     public void cancelButtonTest() {
         String testItemName = "Sauce Labs Backpack";
-        loginPage.login(USERNAME, PASSWORD);
-        productsPage.clickAddToCartButton(testItemName);
-        productsPage.clickShoppingCartLink();
-        shoppingCartPage.clickCheckOutButton();
-        checkOutPage.clickCancelButton();
-        Assert.assertTrue(shoppingCartPage.isContinueShoppingIsDisplayed());
-
-    }
-
-    @Test
-    public void canselButtonTest_1() {
-        String testItemName = "Sauce Labs Backpack";
-
         loginPage.open()
                 .isPageOpened()
                 .login(USERNAME, PASSWORD)
@@ -48,7 +35,6 @@ public class CheckOutTests extends BaseTest {
                 .clickCancelButton()
                 .isPageOpened();
         Assert.assertTrue(shoppingCartPage.isContinueShoppingIsDisplayed());
-
 
     }
 }
