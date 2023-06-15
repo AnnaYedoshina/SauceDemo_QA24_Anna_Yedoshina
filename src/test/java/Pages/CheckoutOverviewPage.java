@@ -3,8 +3,24 @@ package Pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckoutOverviewPage extends BasePage {
+    @Override
+    public CheckoutOverviewPage open() {
+        driver.get("https://www.saucedemo.com/checkout-step-two.html");
+        return this;
+
+    }
+
+    @Override
+    public CheckoutOverviewPage isPageOpened() {
+        wait.until(ExpectedConditions.elementToBeClickable(cancelButtonLocator));
+        return this;
+
+
+    }
+
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
     }
@@ -52,14 +68,16 @@ public class CheckoutOverviewPage extends BasePage {
         return driver.findElement(totalPriceLocator).getText();
     }
     @Step
-    public void clickCancelButton() {
+    public ProductsPage clickCancelButton() {
 
         driver.findElement(cancelButtonLocator).click();
+        return new ProductsPage(driver);
     }
 
-    public void clickFinishButton() {
+    public CheckoutCompletePage clickFinishButton() {
 
         driver.findElement(finishButtonLocator).click();
+        return new CheckoutCompletePage(driver);
     }
 }
 

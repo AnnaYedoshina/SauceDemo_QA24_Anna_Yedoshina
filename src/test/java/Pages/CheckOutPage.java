@@ -2,8 +2,23 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckOutPage extends BasePage {
+    @Override
+    public CheckOutPage open() {
+        driver.get("https://www.saucedemo.com/checkout-step-one.html");
+        return this;
+
+    }
+
+    @Override
+    public CheckOutPage isPageOpened() {
+        wait.until(ExpectedConditions.elementToBeClickable(canselButtonLocator));
+        return this;
+
+    }
+
     public CheckOutPage(WebDriver driver) {
         super(driver);
     }
@@ -19,32 +34,37 @@ public class CheckOutPage extends BasePage {
         return driver.findElement(firstNameInputLocator).isDisplayed();
     }
 
-    public void setFirstNameValue(String firstName) {
+    public CheckOutPage setFirstNameValue(String firstName) {
         driver.findElement(firstNameInputLocator).sendKeys(firstName);
+        return this;
     }
 
-    public void setLastNameValue(String lastName) {
+    public CheckOutPage setLastNameValue(String lastName) {
         driver.findElement(lastNameInputLocator).sendKeys(lastName);
+        return this;
     }
 
-    public void setPostalCodeValue(String postalCode) {
+    public CheckOutPage setPostalCodeValue(String postalCode) {
         driver.findElement(postalCodeInputLocator).sendKeys(postalCode);
+        return this;
     }
 
-    public void checkOut(String firstname, String lastName, String postalCode) {
+    public CheckoutOverviewPage checkOut(String firstname, String lastName, String postalCode) {
         this.setFirstNameValue(firstname);
         this.setLastNameValue(lastName);
         this.setPostalCodeValue(postalCode);
         this.clickContinueButton();
+        return new CheckoutOverviewPage(driver);
     }
 
-    public void clickContinueButton() {
-
+    public CheckoutOverviewPage clickContinueButton() {
         driver.findElement(continueButtonLocator).click();
+        return new CheckoutOverviewPage(driver);
     }
 
-    public void clickCancelButton() {
+    public ShoppingCartPage clickCancelButton() {
         driver.findElement(canselButtonLocator).click();
+        return new ShoppingCartPage(driver);
     }
 }
 

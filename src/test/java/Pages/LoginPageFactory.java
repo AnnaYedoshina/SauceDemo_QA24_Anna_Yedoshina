@@ -3,48 +3,56 @@ package Pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPage extends BasePage {
-    private By usernameInput = By.id("user-name");
-    private By passwordInput = By.id("password");
-    private By loginButton = By.id("login-button");
-    private By errorMessage = By.cssSelector(".error-message-container");
+public class LoginPageFactory extends BasePage {
+    @FindBy(id = "user-name")
+    private WebElement usernameInput;
+    @FindBy(id = "password")
+    private WebElement passwordInput;
+    @FindBy(id = "login-button")
+    private WebElement loginButton;
+    @FindBy(css = ".error-message-container")
+    private WebElement errorMessage;
 
     @Override
-    public LoginPage open() {
+    public LoginPageFactory open() {
         driver.get("https://www.saucedemo.com/");
         return this;
 
     }
 
     @Override
-    public LoginPage isPageOpened() {
+    public LoginPageFactory isPageOpened() {
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         return this;
 
     }
 
-    public LoginPage(WebDriver driver) {
+    public LoginPageFactory(WebDriver driver) {
+
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
     @Step("setting username input value={username}")
-    public LoginPage setUsernameValue(String username) {
-        driver.findElement(usernameInput).sendKeys(username);
+    public LoginPageFactory setUsernameValue(String username) {
+        usernameInput.sendKeys(username);
         return this;
     }
 
     @Step("setting password input value={password}")
-    public LoginPage setPasswordValue(String password) {
-        driver.findElement(passwordInput).sendKeys(password);
+    public LoginPageFactory setPasswordValue(String password) {
+        passwordInput.sendKeys(password);
         return this;
     }
 
     @Step
     public ProductsPage clickLoginButton() {
-        driver.findElement(loginButton).click();
+        loginButton.click();
         return new ProductsPage(driver);
     }
 
@@ -57,13 +65,13 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isErrormessageIsDisplayed() {
-        return driver.findElement(errorMessage).isDisplayed();
+        return errorMessage.isDisplayed();
 
     }
 
     @Step
     public String getErrorMessageText() {
-        return driver.findElement(this.errorMessage).getText();
+        return errorMessage.getText();
 
     }
 }

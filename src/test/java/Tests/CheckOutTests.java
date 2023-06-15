@@ -32,4 +32,23 @@ public class CheckOutTests extends BaseTest {
         Assert.assertTrue(shoppingCartPage.isContinueShoppingIsDisplayed());
 
     }
+
+    @Test
+    public void canselButtonTest_1() {
+        String testItemName = "Sauce Labs Backpack";
+
+        loginPage.open()
+                .isPageOpened()
+                .login(USERNAME, PASSWORD)
+                .isPageOpened()
+                .clickAddToCartButton(testItemName)
+                .clickShoppingCartLink()
+                .isPageOpened()
+                .clickCheckOutButton()
+                .clickCancelButton()
+                .isPageOpened();
+        Assert.assertTrue(shoppingCartPage.isContinueShoppingIsDisplayed());
+
+
+    }
 }
