@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 public class ShoppingCartPage extends BasePage {
@@ -13,6 +14,20 @@ public class ShoppingCartPage extends BasePage {
     private By itemPriceLocator = By.cssSelector(".inventory_item_price");
     private By removeButtonLocator = By.cssSelector("button[id |= 'remove'");
     private By checkOutButtonLocator = By.cssSelector("#checkout");
+
+    @Override
+    public ShoppingCartPage open() {
+        driver.get("https://www.saucedemo.com/cart.html");
+        return this;
+
+    }
+
+    @Override
+    public ShoppingCartPage isPageOpened() {
+        wait.until(ExpectedConditions.elementToBeClickable(checkOutButtonLocator));
+        return this;
+
+    }
 
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
@@ -24,9 +39,9 @@ public class ShoppingCartPage extends BasePage {
     }
 
     @Step
-    public void clickContinueShoppingButton() {
-
+    public ProductsPage clickContinueShoppingButton() {
         driver.findElement(continueShoppingButton).click();
+        return new ProductsPage(driver);
     }
 
     public String getItemName() {
@@ -45,9 +60,9 @@ public class ShoppingCartPage extends BasePage {
     }
 
     @Step
-    public void clickRemoveButton() {
-
+    public ShoppingCartPage clickRemoveButton() {
         driver.findElement(removeButtonLocator).click();
+        return this;
     }
 
     public boolean itemNameIsNotDisplayed() {
@@ -56,9 +71,9 @@ public class ShoppingCartPage extends BasePage {
     }
 
     @Step
-    public void clickCheckOutButton() {
-
+    public CheckOutPage clickCheckOutButton() {
         driver.findElement(checkOutButtonLocator).click();
+        return new CheckOutPage(driver);
     }
 }
 

@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,6 +20,21 @@ public class ProductsPage extends BasePage {
     private By itemPriceLocator = By.cssSelector(".inventory_item_price");
     private By itemDescriptionLocator = By.cssSelector(".inventory_item_desc");
     private By removeButtonLocator = By.cssSelector("button[id |= 'remove']");
+
+    @Override
+    public ProductsPage open() {
+        driver.get("https://www.saucedemo.com/inventory.html");
+        return this;
+
+
+    }
+
+    @Override
+    public ProductsPage isPageOpened() {
+        wait.until(ExpectedConditions.elementToBeClickable(shoppingCartLink));
+        return this;
+
+    }
 
     public ProductsPage(WebDriver driver) {
 
@@ -40,21 +57,24 @@ public class ProductsPage extends BasePage {
     }
 
     @Step
-    public void clickAddToCartButton(String itemName) {
+    public ProductsPage clickAddToCartButton(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         itemContainer.findElement(addToCartButtonLocator).click();
+        return this;
     }
 
     @Step
-    public void clickRemoveButton(String itemName) {
+    public ProductsPage clickRemoveButton(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         itemContainer.findElement(removeButtonLocator).click();
+        return this;
     }
 
     @Step
-    public void openItem(String itemName) {
+    public ProductDetailsPage openItem(String itemName) {
         WebElement itemContainer = getItemContainerByName(itemName);
         itemContainer.findElement(itemNameLocator).click();
+        return new ProductDetailsPage(driver);
     }
 
     @Step("getting item price")
@@ -70,8 +90,9 @@ public class ProductsPage extends BasePage {
     }
 
     @Step
-    public void clickShoppingCartLink() {
+    public ShoppingCartPage clickShoppingCartLink() {
         driver.findElement(shoppingCartLink).click();
+        return new ShoppingCartPage(driver);
     }
 
     private WebElement getItemContainerByName(String itemName) {
