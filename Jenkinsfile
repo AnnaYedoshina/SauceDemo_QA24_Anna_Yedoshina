@@ -13,6 +13,10 @@ pipeline {
         choice (name: 'SUITE', choices: ['suites/smokeTest.xml', 'suites/regressionTest.xml'], description: 'Choose suite to run')
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+
+        choice (name: 'BROWSER', choices: ['chrome', 'safari'], description: 'Choose browser')
+
+
     }
 
     stages {
@@ -33,7 +37,7 @@ pipeline {
                 git branch: "${params.BRANCH}", url: 'https://github.com/AnnaYedoshina/SauceDemo_QA24_Anna_Yedoshina.git'
                 // Get some code from a GitHub repository
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true -Dsuite=${params.SUITE} clean test"
+                sh "mvn -Dmaven.test.failure.ignore=true -Dsuite=${params.SUITE} -Dbrowser=${params.BROWSER} clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"

@@ -29,9 +29,9 @@ public abstract class BaseTest {
     protected CheckoutCompletePage checkoutCompletePage;
     protected ProductDetailsPage productDetailsPage;
 
-    @Parameters({"browserName"})
     @BeforeClass(alwaysRun = true)
-    public void setUp(@Optional("chrome") String browserName, ITestContext context) throws Exception {
+    public void setUp(ITestContext context) throws Exception {
+        String browserName = System.getProperty("browser", "chrome");
         if (browserName.equals("chrome")) {
             driver = new ChromeDriver();
         } else if (browserName.equals("safari")) {
