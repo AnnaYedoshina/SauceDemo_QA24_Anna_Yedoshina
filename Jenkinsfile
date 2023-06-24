@@ -9,8 +9,8 @@ pipeline {
 
     triggers {
         parameterizedCron('''
-        0 21 * * 0-6 %SUITE=smokeTest.xml;BROWSER=Chrome;
-        30 21 * * 0-6 %SUITE=regressionTest.xml;BROWSER=Safari;
+        0 21 * * 0-6 %SUITE=smokeTest.xml;BROWSER=Chrome;HEADLESS=true;
+        30 21 * * 0-6 %SUITE=regressionTest.xml;BROWSER=Safari;HEADLESS=false;
         ''')
     }
 
@@ -18,7 +18,7 @@ pipeline {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
         choice(name: 'SUITE', choices: ['suites/smokeTest.xml', 'suites/regressionTest.xml'], description: 'Choose suite to run')
         choice (name: 'BROWSER', choices: ['Chrome', 'Safari'], description: 'Select a browser')
-        booleanParam (defaultValue: false, description: 'Headless', name: 'HEADLESS')
+        booleanParam (name: 'HEADLESS', defaultValue: false, description: 'Headless mode')
     }
 
     stages {
@@ -27,8 +27,7 @@ pipeline {
                 git branch: "${params.BRANCH}", url: 'https://github.com/AnnaYedoshina/SauceDemo_QA24_Anna_Yedoshina'
 
 
-
-                sh "mvn -Dmaven.test.failure.ignore=true -Dsuite=${params.SUITE} -Dsbrowser=${params.BROWSER} -Dheadless=${params.HEADLESS} clean test "
+                sh "mvn -Dmaven.test.failure.ignore=true -Dsuite=${params.SUITE} -Dbrowser=${params.BROWSER} -Dheadless=${params.HEADLESS} clean test "
 
 
 
