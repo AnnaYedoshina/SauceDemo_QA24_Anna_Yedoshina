@@ -26,16 +26,11 @@ pipeline {
             steps {
                 git branch: "${params.BRANCH}", url: 'https://github.com/AnnaYedoshina/SauceDemo_QA24_Anna_Yedoshina'
 
-
-                sh "mvn -Dmaven.test.failure.ignore=true -Dsuite=${params.SUITE} -Dbrowser=${params.BROWSER} -Dheadless=${params.HEADLESS} clean test "
-
-
+                sh "mvn -Dmaven.test.failure.ignore=true -Dsuite=${params.SUITE} -Dbrowser=${params.BROWSER} -Dheadless=${params.HEADLESS} clean test"
 
             }
 
             post {
-
-
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
 
@@ -55,5 +50,6 @@ pipeline {
              ])
         }
        }
-
+}
+}
 }
