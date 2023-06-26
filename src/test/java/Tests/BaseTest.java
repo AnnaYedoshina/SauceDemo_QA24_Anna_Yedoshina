@@ -16,7 +16,7 @@ import java.time.Duration;
 
 @Listeners({TestLiner.class, InvokedListener.class})
 public abstract class BaseTest {
-    private final static String URL = PropertyReader.getProperty("url");
+    private final static String URL = PropertyReader.getProperty("base_url");
     protected final static String USERNAME = PropertyReader.getProperty("username");
     protected final static String PASSWORD = PropertyReader.getProperty("password");
     protected final static String FIRSTNAME = "Anna";
@@ -35,9 +35,10 @@ public abstract class BaseTest {
     public void setUp(ITestContext context) throws Exception {
         String browserName = System.getProperty("browser", PropertyReader.getProperty("browser"));
         String isHeadless = System.getProperty("headless", PropertyReader.getProperty("isHeadless"));
+
         if (browserName.equals("chrome")) {
             ChromeOptions options = new ChromeOptions();
-            if (isHeadless.equals("true")) {
+            if(isHeadless.equals("true")) {
                 options.addArguments("--headless");
             }
             driver = new ChromeDriver(options);
